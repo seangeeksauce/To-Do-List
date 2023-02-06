@@ -1,0 +1,47 @@
+ToDoList\Entity\Event:
+    type: entity
+    table: event
+    indexes:
+        fk_event_idx:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            unsigned: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: text
+            nullable: false
+        type:
+            type: text
+            nullable: true
+        description:
+            type: text
+            nullable: false
+        user:
+            type: integer
+            nullable: false
+        createdDate:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: created_date
+        completionDate:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: completion_date
+        completedOn:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: completed_on
+        sortOrder:
+            type: integer
+            nullable: true
+            column: sort_order

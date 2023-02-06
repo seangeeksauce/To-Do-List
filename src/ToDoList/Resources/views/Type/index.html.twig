@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	{% stylesheets
+		'@ToDoList/Resources/public/css/items/index.css'
+		filter='cssrewrite'
+	%}
+		<link rel="stylesheet" href="{{ asset_url }}">
+	{% endstylesheets %}
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+
+	{% javascripts
+		'@ToDoList/Resources/public/js/items/index.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<div class="jumbotron">
+				<h2 class='text-center'>Our List Items</h2>
+		</div>
+		<div class="container">
+			<form class="form-horizontal" action="/">
+				<div class="form-group">
+					<label for="new_item" class="col-sm-2 control-label">Add New Item</label>
+		
+					<a href="{{ path('type.create') }}" class="btn btn-primary">Create</a>
+				</div>
+			</form>
+			{# <a class="btn btn-primary js-auto-sort">Sort By Priority</a> #}
+
+			<ul id="sortable" class="list-group">
+			{% for type in types if type is not null %}
+				<li data-id="{{ type.id }}" class="list-group-item col-sm-3">
+					<a href="{{ path('type.edit', { id: type.id }) }}">
+						{{ type.name|default }}
+					</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

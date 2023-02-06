@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="wrapper">
+		<div class="jumbotron">
+			<h2 class='text-center'>New Event</h2>
+		</div>
+		<div class="container">
+			<form class="form-horizontal" action="{{ path('items.update', { id: event.id }) }}">
+				<div class="form-group">
+					<label for="new_item" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" name="title" id="title" value="{{ event.title|default }}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="new_item" class="col-sm-2 control-label">Type</label>
+					<div class="col-sm-2">
+						<select name="type" class="form-control">
+							<option value="">-------</option>
+							{% for type in types if type is not null %}
+								<option {{ type.id == event.type ? 'selected' : '' }} value="{{ type.id }}">{{ type.name|default }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="new_item" class="col-sm-2 control-label">DateTime Picking</label>
+					<div class="col-sm-3">
+						<div class='input-group date' id='datetimepicker'>
+		                    <input type='text' class="form-control" name="completionDate" data-date="{{ event.completionDate|default|date() }}" />
+		                     <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+		                </div>
+					</div>
+				</div>
+						
+				<div class="form-group">
+					<label for="new_item" class="col-sm-2 control-label">Description:</label>
+					<div class="col-sm-6">
+						<textarea class="form-control" name="description">{{ event.description|default }}</textarea> 
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Save</button>
+						<button type="submit" name="complete" class="btn btn-success">Mark Completed</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

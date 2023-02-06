@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+            <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+            
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+            {% stylesheets
+                '@ToDoList/Resources/public/css/Common/theme.css'
+                '@ToDoList/Resources/public/css/Common/bootstrap-datetimepicker.min.css'
+                filter='cssrewrite'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{{ path('homepage') }}">Home</a></li>
+                    <li><a href="{{ path('items') }}">Events</a></li>
+                    <li><a href="{{ path('type') }}">Types</a></li>
+                </ul>
+            </div>
+        </nav>
+        {% block body %}{% endblock %}
+        <footer>
+            <div class="jumbotron"></div>
+        </footer>
+        {% block javascripts %}
+                {% javascripts
+                    '@ToDoList/Resources/public/js/common/bootstrap.min.js'
+                    '@ToDoList/Resources/public/js/common/moment.js'
+                    '@ToDoList/Resources/public/js/common/bootstrap-datetimepicker.min.js'
+                    '@ToDoList/Resources/public/js/items/index.js'
+
+                %}
+                <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+    </body>
+</html>

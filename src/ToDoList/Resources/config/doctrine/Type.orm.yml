@@ -1,0 +1,22 @@
+ToDoList\Entity\Type:
+    type: entity
+    table: type
+    indexes:
+        fk_type_idx:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            unsigned: true
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: text
+            nullable: false
+        actions:
+            type: text
+            nullable: true

@@ -1,0 +1,29 @@
+  	#sortable { 
+	  	list-style-type: none;
+	  	margin: 0; 
+	  	padding: 0; 
+  	}
+	#sortable li {
+		position:relative;
+		min-height: 140px; 
+		text-align: center;
+		padding:10px 0px 20px;
+	}
+	#sortable li a{
+		font-size: 18px;
+	}
+	#sortable li .event-footer {
+		position:absolute;
+		bottom:0;
+		left:0;
+		/*background:green;*/
+		width:100%;
+		height:30px;
+		font-weight: bold;
+		font-size:16px;
+	}
+  	/*html>body #sortable li { height: 1.5em; line-height: 1.2em; }*/
+  	.ui-state-highlight {
+  		height: 1.5em;
+  		line-height: 1.2em;
+  	}

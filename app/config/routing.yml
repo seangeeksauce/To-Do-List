@@ -1,0 +1,83 @@
+homepage:
+    path: /
+    defaults:
+        _controller: ToDoList:Base:index
+
+# items:
+#     path: items
+#     defaults: 
+#         _controller: ToDoList:ItemsBase:items
+items:
+    path: items/
+    defaults: 
+        _controller: ToDoList:Items:index
+
+items.create:
+    path: items/create/
+    defaults:
+        _controller: ToDoList:Items:create
+
+items.edit:
+    path: items/edit/{id}
+    defaults:
+        id: null
+        _controller: ToDoList:Items:edit
+
+items.save:
+    path: items/save/
+    defaults:
+        _controller: ToDoList:Items:save
+
+items.update:
+    path: items/update/{id}
+    defaults:
+        id: null
+        _controller: ToDoList:Items:update
+    requirements:
+        id: \d+
+
+items.ajax.update:
+    path: items/ajax/update
+    defaults:
+        _controller: ToDoList:Items:ajaxUpdate
+    options:
+        expose: true
+
+type:
+    path: type/
+    defaults: 
+        _controller: ToDoList:Type:index
+
+type.create:
+    path: type/create/
+    defaults:
+        _controller: ToDoList:Type:create
+
+type.edit:
+    path: type/edit/{id}
+    defaults:
+        id: null
+        _controller: ToDoList:Type:edit
+
+type.save:
+    path: type/save/
+    defaults:
+        _controller: ToDoList:Type:save
+
+type.update:
+    path: type/update/{id}
+    defaults:
+        id: null
+        _controller: ToDoList:Type:update
+    requirements:
+        id: \d+
+
+service.email:
+    path: service/notify/email/{key}
+    defaults:
+        key: null
+        _controller: ToDoList:Items:sendEmail
+
+# app/config/routing.yml
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
