@@ -6,7 +6,7 @@ parameters:
 services:
     send_notification:
         class: ToDoList\Service\EmailService
-        arguments: [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, @doctrine]
+        arguments: ['', @doctrine]
     app.exception_listener:
         class: ToDoList\EventListener\ExceptionListener
         tags:
